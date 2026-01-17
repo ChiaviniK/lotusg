@@ -1,73 +1,64 @@
 {
-    "gwp": {
-        "CO2": 1,
-        "CH4": 28,
-        "N2O": 265
-    },
-    "referencia": {
-        "nota": "Fatores baseados em valores de referência do PBGHG/IPCC para testes. Ajustar conforme ano base oficial."
-    },
+    "gwp": { "CO2": 1, "CH4": 28, "N2O": 265 },
+    "referencia": { "nota": "Dados fictícios para teste." },
+    
     "combustao_estacionaria": {
-        "Gasolina Automotiva (pura)": {
-            "fracao_fossil": 1.0, "fracao_bio": 0.0
+        "Gasolina C (Brasileira)": { "fracao_fossil": 0.73, "fracao_bio": 0.27 },
+        "Óleo Diesel (comercial)": { "fracao_fossil": 0.88, "fracao_bio": 0.12 },
+        "Etanol Hidratado": { "fracao_fossil": 0.0, "fracao_bio": 1.0 }
+    },
+
+    "combustao_movel": {
+        "frota_veiculos": {
+            "Automóvel Gasolina": {
+                "combustivel_associado": "Gasolina C (Brasileira)",
+                "consumo_medio_kml": 10.0,
+                "permite_ano": true
+            },
+            "Automóvel Etanol": {
+                "combustivel_associado": "Etanol Hidratado",
+                "consumo_medio_kml": 7.0,
+                "permite_ano": true
+            },
+            "Automóvel Flex (Gasolina)": {
+                "combustivel_associado": "Gasolina C (Brasileira)",
+                "consumo_medio_kml": 10.0,
+                "permite_ano": true
+            },
+            "Automóvel Flex (Etanol)": {
+                "combustivel_associado": "Etanol Hidratado",
+                "consumo_medio_kml": 7.0,
+                "permite_ano": true
+            },
+            "Caminhão Leve Diesel": {
+                "combustivel_associado": "Óleo Diesel (comercial)",
+                "consumo_medio_kml": 4.5,
+                "permite_ano": false
+            },
+            "Caminhão Pesado Diesel": {
+                "combustivel_associado": "Óleo Diesel (comercial)",
+                "consumo_medio_kml": 2.5,
+                "permite_ano": false
+            }
         },
-        "Gasolina C (Brasileira)": {
-            "fracao_fossil": 0.73, "fracao_bio": 0.27,
-            "nota": "Mistura padrão (27% Etanol Anidro)"
-        },
-        "Etanol Anidro": {
-            "fracao_fossil": 0.0, "fracao_bio": 1.0
-        },
-        "Etanol Hidratado": {
-            "fracao_fossil": 0.0, "fracao_bio": 1.0
-        },
-        "Óleo Diesel (puro)": {
-            "fracao_fossil": 1.0, "fracao_bio": 0.0
-        },
-        "Óleo Diesel (comercial)": {
-            "fracao_fossil": 0.88, "fracao_bio": 0.12,
-            "nota": "Mistura média estimada B12 (ajustar conforme ano)"
-        },
-        "Biodiesel (B100)": {
-            "fracao_fossil": 0.0, "fracao_bio": 1.0
-        },
-        "Gás Liquefeito de Petróleo (GLP)": {
-            "fracao_fossil": 1.0, "fracao_bio": 0.0
-        },
-        "Gás Natural Seco": {
-            "fracao_fossil": 1.0, "fracao_bio": 0.0
-        },
-         "Lubrificantes": {
-            "fracao_fossil": 1.0, "fracao_bio": 0.0
+        "fatores_ch4_n2o_por_ano": {
+            "nota": "Fatores em kg/Litro. Exemplo simplificado. Na real, varia ano a ano.",
+            "padrao": { "CH4": 0.0005, "N2O": 0.0001 },
+            "2023": { "CH4": 0.0002, "N2O": 0.00005 },
+            "2022": { "CH4": 0.0003, "N2O": 0.00008 },
+            "antigo": { "CH4": 0.0010, "N2O": 0.0005 }
         }
     },
+
     "fatores_base": {
-        "Gasolina Automotiva (pura)": {
-            "CO2": 2.2700, "CH4": 0.0006, "N2O": 0.0001
-        },
-        "Etanol Anidro": {
-            "CO2": 1.5300, "CH4": 0.0003, "N2O": 0.0001
-        },
-        "Etanol Hidratado": {
-            "CO2": 1.4500, "CH4": 0.0003, "N2O": 0.0001
-        },
-        "Óleo Diesel (puro)": {
-            "CO2": 2.6030, "CH4": 0.0040, "N2O": 0.0010
-        },
-        "Biodiesel (B100)": {
-            "CO2": 2.4500, "CH4": 0.0050, "N2O": 0.0020
-        },
-        "Gás Liquefeito de Petróleo (GLP)": {
-            "CO2": 2.9800, "CH4": 0.0010, "N2O": 0.0001
-        },
-        "Gás Natural Seco": {
-            "CO2": 1.9500, "CH4": 0.0020, "N2O": 0.0001
-        },
-        "Lubrificantes": {
-            "CO2": 2.8000, "CH4": 0.0000, "N2O": 0.0000
-        },
-        "Acetileno": {
-            "CO2": 3.3800, "CH4": 0.0000, "N2O": 0.0000
-        }
+        "Gasolina Automotiva (pura)": { "CO2": 2.2700, "CH4": 0.0006, "N2O": 0.0001 },
+        "Etanol Anidro": { "CO2": 1.5300, "CH4": 0.0003, "N2O": 0.0001 },
+        "Etanol Hidratado": { "CO2": 1.4500, "CH4": 0.0003, "N2O": 0.0001 },
+        "Óleo Diesel (puro)": { "CO2": 2.6030, "CH4": 0.0040, "N2O": 0.0010 },
+        "Biodiesel (B100)": { "CO2": 2.4500, "CH4": 0.0050, "N2O": 0.0020 },
+        "Gás Liquefeito de Petróleo (GLP)": { "CO2": 2.9800, "CH4": 0.0010, "N2O": 0.0001 },
+        "Gás Natural Seco": { "CO2": 1.9500, "CH4": 0.0020, "N2O": 0.0001 },
+        "Lubrificantes": { "CO2": 2.8000, "CH4": 0.0000, "N2O": 0.0000 },
+        "Acetileno": { "CO2": 3.3800, "CH4": 0.0000, "N2O": 0.0000 }
     }
 }

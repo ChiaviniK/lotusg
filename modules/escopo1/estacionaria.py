@@ -30,6 +30,7 @@ def render():
     # TABELA 1: CÁLCULO VIA COMBUSTÍVEL
     # ========================================================
     st.subheader("Tabela 1. Inventário (Via Consumo)")
+    
     with st.expander("📝 Adicionar Lançamento por Combustível", expanded=True):
         with st.form("form_estacionaria", clear_on_submit=True):
             c1, c2, c3 = st.columns(3)
@@ -42,6 +43,23 @@ def render():
             if submitted and quantidade > 0:
                 res = calc.calcular_estacionaria(combustivel_selecionado, quantidade)
                 
+                # --- CARDS DE RESUMO (KPIs) - REINSERIDOS AQUI ---
+                st.markdown("#### Resultado do Lançamento")
+                kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+                
+                # Cores dinâmicas para chamar atenção se for zero
+                delta_gee = "normal" if res['total_gee'] > 0 else "off"
+                
+                kpi1.metric("Qtd Fóssil", f"{res['qtd_fossil']:.2f}", help="Quantidade atribuída à parte fóssil")
+                kpi2.metric("Qtd Bio", f"{res['qtd_bio']:.2f}", help="Quantidade atribuída à parte renovável")
+                kpi3.metric("Emissão Bio (t)", f"{res['total_biogenico']:.4f}", help="Não conta para o meta de redução (reporte opcional)")
+                kpi4.metric("TOTAL GEE (tCO₂e)", f"{res['total_gee']:.4f}", delta=delta_gee, help="O valor oficial do inventário")
+
+                if res['total_gee'] == 0 and res['total_biogenico'] == 0:
+                     st.warning("⚠️ Resultado zerado. Verifique se os fatores estão cadastrados no JSON.")
+                # --------------------------------------------------
+
+                # Monta o objeto completo
                 novo_lancamento = {
                     "Registro": reg_fonte, "Descrição": desc_fonte, 
                     "Combustível": combustivel_selecionado, "Unidade": unidade_atual, "Quantidade Total": quantidade,
