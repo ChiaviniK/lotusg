@@ -1,0 +1,35 @@
+{
+    "gwp": {
+        "CO2": 1,
+        "CH4": 28,
+        "N2O": 265
+    },
+    "escopo1": {
+        "combustao_movel": {
+            "Diesel S10": {
+                "unidade": "litros",
+                "fatores": { "CO2": 2.503, "CH4": 0.00014, "N2O": 0.00016 }
+            },
+            "Gasolina C": {
+                "unidade": "litros",
+                "fatores": { "CO2": 1.876, "CH4": 0.0005, "N2O": 0.00008 }
+            },
+            "Etanol Hidratado": {
+                "unidade": "litros",
+                "fatores": { "CO2": 0.0, "CH4": 0.0003, "N2O": 0.0001 },
+                "nota": "Biogênico reportado à parte"
+            }
+        }
+    },
+    "escopo2": {
+        "energia_eletrica_sin": {
+            "unidade_entrada": "kWh",
+            "fatores_medios_anuais": {
+                "2023": 0.0430, 
+                "2022": 0.0427,
+                "2021": 0.1264
+            },
+            "nota": "Fatores em tCO2e/MWh (Exemplo simplificado do SIN)"
+        }
+    }
+}
